@@ -1,12 +1,8 @@
-
 using SVD_Projection
-using Test
+using Test, Random
+Random.seed!(1234)
+discovery = rand([0., 1., 2.], 30, 20);
+target= rand([0., 1., 2.], 30, 15);
 
-@testset "SVD_Projection.jl" begin
-
-seed!(1234)
-discovery_data = rand([0.,1.,2.],30, 20)
-target_data = rand([0.,1.,2.], 30, 15)
-(V_discovery, D, V_target) = SVD_Projection.project_left_matrix(discovery_data, target_data, 10)
-
-end
+V_PC = project_PC(discovery, target, N_PC=3)
+@test V_PC[1,:] == [-0.12869065723376472; -0.05776618956235076; -0.12278055691277556]

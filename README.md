@@ -8,7 +8,12 @@ using Pkg
 Pkg.clone("https://github.com/jjyang2019/SVD_projection.jl.git")
 ```
 
-The training(discovery), testing(target) data, and test_project_V_matrix.jl are in the test folder to demonstrate the usage. Each row of the training data represents a variant and each column an subject. Each cell in the training data matrix is coded as the number of the effect allele. The test data has the same format. To run the test program, simply type
+The function of the modeule is `project_PC` and it requires two data, `A` (discovery) and `B` (target), and one optional argument `N_PC` for the number of principal components calculated (default is 10).
+
+The discovery data and target data are genotype data encoded as 0, 1, or 2 where each row of the represents a variant and each column an subject.  
+
+See the details of using in the Julia help enviornment by typing ?`project_PC`.
+Run the test program to learn how the `project_PC` works. This test program  simulates discovery and target data.
 ```{julia}
 using SVD_Projection
 include("runtest.jl")
