@@ -1,14 +1,7 @@
 module SVD_Projection
 
-export projectV, myf
-
+export project_Left_matrix
 using LinearAlgebra
-
-# using LinearAlgebra, CSVFiles, DataFrames, CSV,  CodecZlib, Mmap, DelimitedFiles
-
-function myf(x)
-     3.0x
-end
 
 function cal_p(x)
     sum = 0.
@@ -82,22 +75,22 @@ function cal_V_projection(obj, U, D)
     transpose(obj) * U * inv(Diagonal(D))
 end
 
-function projectV(train, test, N_PC=10)
-    println("Calculate SNP freq")
+function project_Left_matrix(train, test, N_PC=10)
+    #println("Calculate SNP freq")
     snp_freq = cal_snp_freq(train)
 
-    println("Normalization Train data")
+    #println("Normalization Train data")
     raw_norm = normalized_data(train, snp_freq);
 
-    println("Calculate SVD")
+    #println("Calculate SVD")
     (U,D,V_train) = my_svd(raw_norm, N_PC);
 
-    println("Normalization Test Data")
-    test_norm = normalized_data(test_data , snp_freq)
+    #println("Normalization Test Data")
+    test_norm = normalized_data(test , snp_freq)
 
-    println("Project Test Data to V matrix")
+    #println("Project Test Data to V matrix")
     V_test = cal_V_projection(test_norm, U, D)
-    return (V.train, D, V.test)
+    return (V_train, D, V_test)
 end
 
 

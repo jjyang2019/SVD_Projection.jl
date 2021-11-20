@@ -3,11 +3,10 @@ using SVD_Projection
 using Test
 using DataFrames, CSV
 
-y = myf(2.0)
-println(y)
-train = rand([0,1,2],30, 20)
-test = rand([0,1,2], 30, 15)
-(V_train, D, V_test) = projectV(train, test, 10)
+
+train = rand([0.,1.,2.],30, 20)
+test = rand([0.,1.,2.], 30, 15)
+(V_train, D, V_test) = SVD_Projection.project_Left_matrix(train, test, 10)
 
 @testset "SVD_Projection.jl" begin
 
