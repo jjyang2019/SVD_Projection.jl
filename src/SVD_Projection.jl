@@ -1,6 +1,6 @@
 module SVD_Projection
 
-export project_Left_matrix
+export project_left_matrix
 using LinearAlgebra
 
 function cal_p(x)
@@ -75,7 +75,7 @@ function cal_V_projection(obj, U, D)
     transpose(obj) * U * inv(Diagonal(D))
 end
 
-function project_Left_matrix(train, test, N_PC=10)
+function project_left_matrix(train, test, N_PC=10)
     #println("Calculate SNP freq")
     snp_freq = cal_snp_freq(train)
 
