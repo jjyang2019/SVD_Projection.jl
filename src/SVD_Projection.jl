@@ -1,5 +1,7 @@
 module SVD_Projection
+
 using LinearAlgebra
+
 export project_PC
 
 function cal_p(x)
@@ -74,6 +76,7 @@ function cal_V_projection(obj, U, D)
     res = transpose(obj) * U * inv(Diagonal(D))
     return res
 end
+
 
 """
     project_PC(A, B; N_PC=10)
